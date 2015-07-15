@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Archivos de código fuente">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Archivos de encabezado">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="OpenGL">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Data">
+      <UniqueIdentifier>{46b45870-24ba-46fd-ba5f-8e2892586141}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Source\main.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Game.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Sprite.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\SpriteDef.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Nave.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Stage.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\OpegGLImplement.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Source\Game.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Config.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Sprite.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\SpriteDeF.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Nave.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Stage.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\OpegGLImplement.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Ejecutable\fragment.glsl">
+      <Filter>OpenGL</Filter>
+    </None>
+    <None Include="..\Ejecutable\vertex.glsl">
+      <Filter>OpenGL</Filter>
+    </None>
+    <None Include="..\Ejecutable\balas.dat">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="..\Ejecutable\enemigo.dat">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="..\Ejecutable\Ganaste.dat">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="..\Ejecutable\Jugando.dat">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="..\Ejecutable\Menu.dat">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="..\Ejecutable\minave.dat">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="..\Ejecutable\Perdiste.dat">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="..\Ejecutable\Texto_Nombre.dat">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="..\Ejecutable\Texto_Opcion1.dat">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="..\Ejecutable\Texto_Opcion1Sel.dat">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="..\Ejecutable\Texto_Opcion2.dat">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="..\Ejecutable\Texto_Opcion2Sel.dat">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="..\Ejecutable\Texto_Titulo.dat">
+      <Filter>Data</Filter>
+    </None>
+    <None Include="..\Ejecutable\balasE.dat">
+      <Filter>Data</Filter>
+    </None>
+  </ItemGroup>
+</Project>
