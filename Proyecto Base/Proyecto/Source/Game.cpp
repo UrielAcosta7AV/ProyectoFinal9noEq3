@@ -62,7 +62,7 @@ void CGame::IniciandoVideo()
 
 void CGame::CargandoObjetos()
 {
-	menuFondo = new Sprite(&openGlImplement, "Menu", 0, 0);
+	menuFondo = new Sprite(&openGlImplement, "Menu", -480, 0);
 	textoTitulo = new Sprite(&openGlImplement, "Texto_Titulo", 0, 0);
 	textoNombre = new Sprite(&openGlImplement, "Texto_Nombre", 0, 0);
 	textoOpcion1 = new Sprite(&openGlImplement, "Texto_Opcion1", 0, 0);
@@ -70,13 +70,19 @@ void CGame::CargandoObjetos()
 	textoOpcion1Sel = new Sprite(&openGlImplement, "Texto_Opcion1Sel", 0, 0);
 	textoOpcion2Sel = new Sprite(&openGlImplement, "Texto_Opcion2Sel", 0, 0);
 	nave = new Nave(&openGlImplement, "MiNave", (WIDTH_SCREEN / 2), (HEIGHT_SCREEN - 80), NAVE_PROPIA);
-	jugandoFondo = new Sprite(&openGlImplement, "Jugando", -380, 0);
-	ganasteFondo = new Sprite(&openGlImplement, "Ganaste", 0, 0);
-	perdisteFondo = new Sprite(&openGlImplement, "Perdiste", 0, 0);
-	imgperdiste = new Sprite(&openGlImplement, "fin", 0, 0);
-	imgfon = new Sprite(&openGlImplement, "fon", 0, 640);
-	imgganaste = new Sprite(&openGlImplement, "win", 0, 0);
-	img1 = new Sprite(&openGlImplement, "img1", 0, -340);
+	jugandoFondo = new Sprite(&openGlImplement, "Jugando", -380, 0);////IMAGEN DE FONDO ANIMACION 
+	ganasteFondo = new Sprite(&openGlImplement, "Menu", -480, 0);////IMAGEN DE FONDO ANIMACION GANASTE/PERDISTE
+	perdisteFondo = new Sprite(&openGlImplement, "Menu", -480, 0);////IMAGEN DE FONDO ANIMACION /PERDISTE
+	imgperdiste = new Sprite(&openGlImplement, "fin", 0, 0);////IMAGEN ANIMACION /PERDISTE NAVE ENEMIGO
+	imgfon = new Sprite(&openGlImplement, "fon", 0, 640);////IMAGEN BASUARA ESPACIAL EN JUGANDO
+	img1 = new Sprite(&openGlImplement, "img1", 0, -340);////IMAGEN BASUARA ESPACIAL2 EN JUGANDO
+	youwin = new Sprite(&openGlImplement, "win", 210, 80);///////IMAGEN DE GANASTE
+	youlost = new Sprite(&openGlImplement, "youlost", 210, 80);///TEXTO youlost
+	enter = new Sprite(&openGlImplement, "Enter", 150, 500);///TEXTO ENTER
+	imgganasteNEVE = new Sprite(&openGlImplement, "MiNave", 0, 0);///IMAGEN ANIMACION /PERDISTE NAVE propia
+	basura3 = new Sprite(&openGlImplement, "imgbasura3", 0, 320);////IMAGEN BASUARA ESPACIAL3 EN JUGANDO
+
+
 
 	
 	for (int i = 0; i < MAXIMO_DE_ENEMIGOS; i++)
@@ -101,6 +107,13 @@ void CGame::Finalize(){
 	delete jugandoFondo;
 	delete ganasteFondo;
 	delete perdisteFondo;
+	delete youlost;
+	delete youwin;
+	delete img1;
+	delete imgfon;
+	delete imgperdiste;
+	delete enter;
+	delete imgganasteNEVE;
 	openGlImplement.QuitShaders();
 }
 
@@ -226,7 +239,9 @@ void CGame::MoverEnemigo(){
 }//Termina MoverEnemigo
 
 void CGame::JugandoPintar(){
-	//
+	/////
+
+	/////
 	jugandoFondo->Draw();
 	
 	jugandoFondo->translate_x += 1;
@@ -236,26 +251,14 @@ void CGame::JugandoPintar(){
 	{
 		jugandoFondo->translate_x = -380;
 	}
-	
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+	///////////////////////////////////////
+    ///BASURA ESPACIAL
 	img1->Draw();
-	img1->ScaleXY(80, 100);
+	img1->ScaleXYZ(150.f, 150.f, 150.f);
 	img1->translate_x += 5;
 	img1->translate_y += 2;
-	img1->RotateXYZ(360.f, 360.f, 0.f);
+	img1->RotateXYZ(360.f, 360.f, 360.f);
 	if (img1->translate_x >= 1300)
 	{
 		img1->translate_x = 0;
@@ -263,7 +266,8 @@ void CGame::JugandoPintar(){
 	}
 
 	imgfon->Draw();
-	imgfon->ScaleXY(1.f, 1.f);
+	imgfon->ScaleXYZ(30.f, 30.f, 30.f);
+	imgfon->RotateXYZ(rotate_nave_x, rotate_nave_y, rotate_nave_z);
 	imgfon->translate_x += 5;
 	imgfon->translate_y -= 3;
 	if (imgfon->translate_x >= 1800)
@@ -271,9 +275,20 @@ void CGame::JugandoPintar(){
 		imgfon->translate_x = 0;
 		imgfon->translate_y = 640;
 	}
-
-
+	///////
+	basura3->Draw();
+	basura3->ScaleXYZ(30.f, 30.f, 30.f);
+	basura3->RotateXYZ(rotate_nave_x, rotate_nave_y, rotate_nave_z);
+	basura3->translate_x += 5;
+	/*basura3->translate_y -= 3;*/
+	if (basura3->translate_x >= 1800)
+	{
+		basura3->translate_x = -100;
+		basura3->translate_y = 320;
+	}
 	
+	///FIN DE BASURA ESPACIAL
+	///////////////////////////////////////
 	////////////////////////////////////////
 	//////// CONTROL DE COLISIONES /////////
 	for (int i = 0; i < nivel[nivelActual].Enemigos_VisiblesAlMismoTiempo; i++)
@@ -357,6 +372,8 @@ void CGame::JugandoActualizar(){
 	{
 		nave->Disparar(nivel[nivelActual].Nave_BalasMaximas);
 	}
+
+
 	
 	if (keys[SDL_SCANCODE_C]){//nuestra bala / nave enemigo
 		int enemigoAEliminar = rand() % nivel[nivelActual].Enemigos_VisiblesAlMismoTiempo;
@@ -398,11 +415,24 @@ void CGame::MenuPintar()
 {
 
 	menuFondo->Draw();
-	textoTitulo->TranslateXYDraw(WIDTH_SCREEN / 8, 0);
+
+	
+	menuFondo->translate_x += 1;
+
+
+	if (menuFondo->translate_x >= 5)
+	{
+		menuFondo->translate_x = -480;
+	}
+
+
+
+	//////
+	textoTitulo->TranslateXYDraw(WIDTH_SCREEN / 3, 0);
 	///////////////////////////////////////////////////
 	//animacion de inicio
 	//textoNombre->TranslateXY( WIDTH_SCREEN / 3, 450 -2.f);//570
-	textoNombre->TranslateXY( WIDTH_SCREEN / 3, 450);//570>>>>>>> .r6
+	textoNombre->TranslateXY( WIDTH_SCREEN / 5, 450);//570>>>>>>> .r6
 	textoNombre->Draw();
 	///////////////
 	//////////////
@@ -441,18 +471,41 @@ void CGame::IniciarNave(){
 void CGame::TerminadoPintar(){
 	if (juegoGanado)
 	{
+
+
 		ganasteFondo->Draw();
-		imgganaste->TranslateXYDraw(450, 320);
-		imgganaste->TranslateXYZ(translate_nave_x, translate_nave_y, translate_nave_z);
-		imgganaste->ScaleXYZ(90.f, 90.f, 60.f);
-		imgganaste->RotateXYZ(rotate_nave_x, rotate_nave_y, rotate_nave_z);
-		imgganaste->Draw();
+		youwin->Draw();
+		enter->Draw();
+		ganasteFondo->translate_x += 1;
+
+
+		if (ganasteFondo->translate_x >= 4)
+		{
+			ganasteFondo->translate_x = -480;
+		}
+
+		imgganasteNEVE->TranslateXYDraw(450, 320);
+		imgganasteNEVE->TranslateXYZ(translate_nave_x, translate_nave_y, translate_nave_z);
+		imgganasteNEVE->ScaleXYZ(100.f, 100.f, 100.f);
+		imgganasteNEVE->RotateXYZ(rotate_nave_x, rotate_nave_y, rotate_nave_z);
+		imgganasteNEVE->Draw();
 
 		
 	}
 		
 	else
-		perdisteFondo->Draw();
+	perdisteFondo->Draw();
+	youlost->Draw();
+	enter->Draw();
+
+	perdisteFondo->translate_x += 1;
+
+
+	if (perdisteFondo->translate_x >= 4)
+	{
+		perdisteFondo->translate_x = -480;
+	}
+
 	imgperdiste->TranslateXYDraw(450, 320);
 	imgperdiste->TranslateXYZ(translate_nave_x, translate_nave_y, translate_nave_z);
 	imgperdiste->ScaleXYZ(180.f, 180.f, 180.f);

@@ -86,7 +86,7 @@ void Nave::Draw()
 		
 		//
 		//nave->translate_x(10);
-		nave->ScaleXYZ(15.f, 5.f, 15.f);
+		
 		nave->Draw();
 		for (int i = 0; i < MAXIMO_DE_BALAS; i++)
 		{
@@ -96,8 +96,10 @@ void Nave::Draw()
 			switch (tipoNave)
 			{
 			case NAVE_PROPIA:
+				nave->ScaleXYZ(10.f, 10.f, 10.f);
 				//nave->rotate_x = -10;
-				//nave->rotate_y = 80;
+				nave->RotateXYZ(5.f, 5.f, 5.f);
+				
 				//nave->rotate_z = 100;
 				
 
@@ -107,7 +109,8 @@ void Nave::Draw()
 				break;
 
 			case NAVE_ENEMIGA:
-				nave->rotate_z = 90;
+				nave->ScaleXYZ(15.f, 15.f, 15.f);
+				nave->rotate_z = 180;
 				//nave->rotate_y = 20;
 				bala[i]->MoverArribaAbajo(10);
 			

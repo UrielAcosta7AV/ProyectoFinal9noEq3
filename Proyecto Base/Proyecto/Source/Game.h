@@ -97,11 +97,18 @@ private:
 	Sprite *textoOpcion2Sel;//Textos del juego
 	Sprite *jugandoFondo;//Fondo del juego
 	Sprite *ganasteFondo;//Fondo cuando ganas
+	Sprite *imgganasteNEVE; /////FONDO DE IMAGEN ROTANDO
 	Sprite *perdisteFondo;//Fondo cuando ganas
 	Sprite *img1;
+
+	Sprite *youwin;
+	Sprite *youlost;
+	Sprite *enter;
+	
 
 	Sprite *imgperdiste;
 	Sprite *imgganaste;
 	Sprite *imgfon;
+	Sprite *basura3;
 
 };

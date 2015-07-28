@@ -2,7 +2,7 @@
 #define _CONFIG_H_
 
 #define GL_GLEXT_PROTOTYPES
-#define VERSION "0.0.6"
+#define VERSION "N.A.V.I 0.0.7"
 
 #define WIDTH_SCREEN 640
 #define HEIGHT_SCREEN 640
